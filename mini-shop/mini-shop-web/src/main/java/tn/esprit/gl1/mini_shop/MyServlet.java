@@ -2,6 +2,7 @@ package tn.esprit.gl1.mini_shop;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,8 +31,9 @@ public class MyServlet extends HttpServlet {
 	 */
 	protected void service(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		Date date = new Date();
+		String name = request.getParameter("n");
 		PrintWriter printWriter = response.getWriter();
-		printWriter.write("ahla w sahla ya :");
+		printWriter.write("hello it is " + date + "welcome Mr/Ms :" + name);
 	}
-
 }
