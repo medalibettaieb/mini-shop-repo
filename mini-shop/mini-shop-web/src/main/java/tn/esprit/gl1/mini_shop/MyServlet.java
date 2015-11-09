@@ -31,7 +31,7 @@ public class MyServlet extends HttpServlet {
 	protected void service(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter printWriter = response.getWriter();
-		printWriter.write("ahla w sahla ");
+		printWriter.write("ahla w sahla ya :");
 	}
 
 }
