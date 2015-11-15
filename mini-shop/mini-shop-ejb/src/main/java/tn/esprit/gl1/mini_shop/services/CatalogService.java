@@ -31,7 +31,6 @@ public class CatalogService implements CatalogServiceRemote,
 		em.merge(product);
 	}
 
-
 	public void removeProduct(Product product) {
 		em.remove(em.merge(product));
 	}
@@ -47,12 +46,11 @@ public class CatalogService implements CatalogServiceRemote,
 						Product.class).setParameter("c", category)
 				.getResultList();
 	}
-	
+
 	public Category createCategory(Category category) {
 		em.persist(category);
 		return category;
 	}
-
 
 	public void saveCategory(Category category) {
 		em.merge(category);
@@ -87,8 +85,9 @@ public class CatalogService implements CatalogServiceRemote,
 
 	public byte[] findPictureByProductName(String productName) {
 		byte[] picture = null;
-		TypedQuery<byte[]> query = em.createQuery(
-				"select p.picture from Product p where p.name=:x", byte[].class);
+		TypedQuery<byte[]> query = em
+				.createQuery("select p.picture from Product p where p.name=:x",
+						byte[].class);
 		query.setParameter("x", productName);
 		try {
 			picture = query.getSingleResult();
@@ -99,7 +98,5 @@ public class CatalogService implements CatalogServiceRemote,
 		return picture;
 
 	}
-
-	
 
 }
