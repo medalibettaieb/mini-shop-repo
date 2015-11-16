@@ -1,4 +1,4 @@
-package tn.esprit.gl1.mini_shop;
+package tn.esprit.gl1.mini_shop.servlets;
 
 import java.io.IOException;
 import java.util.List;
