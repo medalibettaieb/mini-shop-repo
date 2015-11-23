@@ -8,16 +8,30 @@
 	<h:outputStylesheet library="css" name="screen.css" />
 </h:head>
 <h:body>
-
 	<div id="container">
-
-		<div id="content">
-
-			<ui:insert name="pageContent">
-                    [Content will be inserted here]
-         </ui:insert>
+		<div id="top">
+			<ui:insert name="pageTop">
+			</ui:insert>
 		</div>
-		<div id="footer">ESPRIT 2015 @javaEE Team 4Gl1</div>
+
+		<table>
+			<tr>
+				<td>
+					<div id="side">
+						<ui:insert name="pageSide">
+						</ui:insert>
+					</div>
+				</td>
+				<td>
+					<div id="content">
+						<ui:insert name="pageContent">
+
+						</ui:insert>
+					</div>
+				</td>
+			</tr>
+		</table>
+		<div id="footer">ESPRIT 2015</div>
 	</div>
 </h:body>
 </html>
