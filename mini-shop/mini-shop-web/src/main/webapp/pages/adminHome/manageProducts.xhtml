@@ -14,9 +14,13 @@
 		</h:form>
 	</ui:define>
 	<ui:define name="pageContent">
-
-manage
-
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputText value="name" />
+				<h:inputText value="#{productBean.product.name}" />
+				<h:commandButton action="#{productBean.doCreateProduct()}"
+					value="create" />
+			</h:panelGrid>
+		</h:form>
 	</ui:define>
-
 </ui:composition>
