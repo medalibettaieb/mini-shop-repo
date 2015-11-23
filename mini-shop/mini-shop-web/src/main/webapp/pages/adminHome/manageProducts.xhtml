@@ -4,15 +4,19 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	template="/template/template.xhtml">
 
-	<ui:define name="pageTitle">adminHome</ui:define>
+	<ui:define name="pageTitle">manage products</ui:define>
 	<ui:define name="pageTop">welcome #{loginBean.user.login}</ui:define>
 	<ui:define name="pageSide">
 		<h:form>
-			<h:commandLink action="manageProducts" value="manage products" />
+			<h:commandLink action="update" value="manage products" />
 			<br />
 			<h:commandLink action="update" value="manage categories" />
 		</h:form>
 	</ui:define>
-	<ui:define name="pageContent">adminHome</ui:define>
+	<ui:define name="pageContent">
+
+manage
+
+	</ui:define>
 
 </ui:composition>

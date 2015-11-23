@@ -22,6 +22,7 @@ public class LoginBean {
 	public String doLogin() {
 		User userLoggedIn = userServiceLocal.authenticate(user.getLogin(),
 				user.getPassword());
+		user=userLoggedIn;
 		String navigateTo = null;
 		if (userLoggedIn instanceof Admin) {
 			navigateTo = "pages/adminHome/adminHome";
