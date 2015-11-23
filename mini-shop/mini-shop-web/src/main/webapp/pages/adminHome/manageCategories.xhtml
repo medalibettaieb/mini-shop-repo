@@ -1,0 +1,44 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/template/template.xhtml">
+
+	<ui:define name="pageTitle">manage categories</ui:define>
+	<ui:define name="pageTop">welcome #{loginBean.user.login}</ui:define>
+	<ui:define name="pageSide">
+		<h:form>
+			<h:commandLink action="update" value="manage products" />
+			<br />
+			<h:commandLink action="update" value="manage categories" />
+		</h:form>
+	</ui:define>
+	<ui:define name="pageContent">
+		<h:form>
+
+			<h:dataTable border="2" value="#{categoryBean.datamodel}" var="c">
+				<h:column id="column1">
+					<f:facet name="header">
+						<h:outputText value="name"></h:outputText>
+					</f:facet>
+					<h:outputText value="#{c.name}" />
+				</h:column>
+				<h:column id="column2">
+					<f:facet name="header">
+						<h:outputText value="#"></h:outputText>
+					</f:facet>
+					<h:commandButton action="#{categoryBean.doDeleteCategory()}"
+						value="delete" />
+				</h:column>
+
+			</h:dataTable>
+
+			<h:panelGrid columns="2">
+				<h:outputText value="name" />
+				<h:inputText value="#{categoryBean.category.name}" />
+				<h:commandButton action="#{categoryBean.doCreateCategory()}"
+					value="create" />
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
