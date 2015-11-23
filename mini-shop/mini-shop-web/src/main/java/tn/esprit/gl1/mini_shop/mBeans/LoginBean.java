@@ -22,15 +22,16 @@ public class LoginBean {
 	public String doLogin() {
 		User userLoggedIn = userServiceLocal.authenticate(user.getLogin(),
 				user.getPassword());
+		String navigateTo = null;
 		if (userLoggedIn instanceof Admin) {
-			System.out.println("welcom Admin");
+			navigateTo = "pages/adminHome/adminHome";
 		} else if (userLoggedIn instanceof Customer) {
-			System.out.println("welcom customer");
+			navigateTo = "pages/customerHome/customerHome";
 		} else {
-			System.out.println("rawa7 ldarkom ...");
+			navigateTo = "error";
 		}
 
-		return "";
+		return navigateTo;
 	}
 
 	public User getUser() {
