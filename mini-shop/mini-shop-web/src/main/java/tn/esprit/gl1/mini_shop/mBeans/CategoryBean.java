@@ -16,18 +16,31 @@ public class CategoryBean {
 	private Category category = new Category();
 	private Category categoryChosen = new Category();
 	private List<Category> categories = new ArrayList<>();
+	private String findWord;
+	private Boolean displyTable = false;
 
 	@EJB
 	private CatalogServiceLocal catalogServiceLocal;
 
 	public String doCreateCategory() {
 		catalogServiceLocal.createCategory(category);
+		displyTable = false;
 		return "";
 	}
 
 	public String doDeleteCategory() {
 		catalogServiceLocal.removeCategory(categoryChosen);
 		return "";
+	}
+
+	public String doFindCategoryByName() {
+		System.out.println(catalogServiceLocal.findCategoryByName(findWord)
+				.getId());
+		return "";
+	}
+
+	public void doDisplayTable() {
+		displyTable = true;
 	}
 
 	public Category getCategory() {
@@ -53,6 +66,22 @@ public class CategoryBean {
 
 	public void setCategoryChosen(Category categoryChosen) {
 		this.categoryChosen = categoryChosen;
+	}
+
+	public String getFindWord() {
+		return findWord;
+	}
+
+	public void setFindWord(String findWord) {
+		this.findWord = findWord;
+	}
+
+	public Boolean getDisplyTable() {
+		return displyTable;
+	}
+
+	public void setDisplyTable(Boolean displyTable) {
+		this.displyTable = displyTable;
 	}
 
 }

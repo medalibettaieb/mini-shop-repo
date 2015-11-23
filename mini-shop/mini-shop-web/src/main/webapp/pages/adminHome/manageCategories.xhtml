@@ -15,7 +15,9 @@
 	</ui:define>
 	<ui:define name="pageContent">
 		<h:form>
-
+			<h:inputText value="#{categoryBean.findWord}" />
+			<h:commandButton action="#{categoryBean.doFindCategoryByName()}"
+				value="find Category" />
 			<h:dataTable border="2" value="#{categoryBean.categories}" var="c">
 				<h:column id="column1">
 					<f:facet name="header">
@@ -35,8 +37,8 @@
 				</h:column>
 
 			</h:dataTable>
-
-			<h:panelGrid columns="2">
+<h:commandButton action="#{categoryBean.doDisplayTable}" value="create category" />
+			<h:panelGrid columns="2" rendered="#{categoryBean.displyTable}">
 				<h:outputText value="name" />
 				<h:inputText value="#{categoryBean.category.name}" />
 				<h:commandButton action="#{categoryBean.doCreateCategory()}"
