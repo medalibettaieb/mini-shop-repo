@@ -6,8 +6,6 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.model.DataModel;
-import javax.faces.model.ListDataModel;
 
 import tn.esprit.gl1.mini_shop.persistence.Category;
 import tn.esprit.gl1.mini_shop.services.CatalogServiceLocal;
@@ -16,8 +14,8 @@ import tn.esprit.gl1.mini_shop.services.CatalogServiceLocal;
 @ViewScoped
 public class CategoryBean {
 	private Category category = new Category();
+	private Category categoryChosen = new Category();
 	private List<Category> categories = new ArrayList<>();
-	private DataModel<Category> datamodel = new ListDataModel<>();
 
 	@EJB
 	private CatalogServiceLocal catalogServiceLocal;
@@ -26,8 +24,8 @@ public class CategoryBean {
 		catalogServiceLocal.createCategory(category);
 		return "";
 	}
-	public String doDeleteCategory(){
-		Category categoryChosen=datamodel.getRowData();
+
+	public String doDeleteCategory() {
 		catalogServiceLocal.removeCategory(categoryChosen);
 		return "";
 	}
@@ -49,13 +47,12 @@ public class CategoryBean {
 		this.categories = categories;
 	}
 
-	public DataModel<Category> getDatamodel() {
-		datamodel.setWrappedData(catalogServiceLocal.findAllCategories());
-		return datamodel;
+	public Category getCategoryChosen() {
+		return categoryChosen;
 	}
 
-	public void setDatamodel(DataModel<Category> datamodel) {
-		this.datamodel = datamodel;
+	public void setCategoryChosen(Category categoryChosen) {
+		this.categoryChosen = categoryChosen;
 	}
 
 }

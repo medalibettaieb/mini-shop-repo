@@ -16,7 +16,7 @@
 	<ui:define name="pageContent">
 		<h:form>
 
-			<h:dataTable border="2" value="#{categoryBean.datamodel}" var="c">
+			<h:dataTable border="2" value="#{categoryBean.categories}" var="c">
 				<h:column id="column1">
 					<f:facet name="header">
 						<h:outputText value="name"></h:outputText>
@@ -28,7 +28,10 @@
 						<h:outputText value="#"></h:outputText>
 					</f:facet>
 					<h:commandButton action="#{categoryBean.doDeleteCategory()}"
-						value="delete" />
+						value="delete">
+						<f:setPropertyActionListener value="#{c}"
+							target="#{categoryBean.categoryChosen}"></f:setPropertyActionListener>
+					</h:commandButton>
 				</h:column>
 
 			</h:dataTable>
