@@ -5,7 +5,10 @@
 	template="/template/template.xhtml">
 
 	<ui:define name="pageTitle">adminHome</ui:define>
-	<ui:define name="pageTop">welcome #{loginBean.user.login}</ui:define>
+	<ui:define name="pageTop">welcome #{loginBean.user.login} <h:form>
+			<h:commandButton value="logout" action="#{loginBean.logOut()}"></h:commandButton>
+		</h:form>
+	</ui:define>
 	<ui:define name="pageSide">
 		<h:form>
 			<h:commandLink action="manageProducts" value="manage products" />

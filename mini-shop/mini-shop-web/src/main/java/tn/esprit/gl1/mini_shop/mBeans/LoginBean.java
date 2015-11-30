@@ -3,6 +3,7 @@ package tn.esprit.gl1.mini_shop.mBeans;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import tn.esprit.gl1.mini_shop.persistence.Admin;
 import tn.esprit.gl1.mini_shop.persistence.Customer;
@@ -39,6 +40,13 @@ public class LoginBean {
 		return navigateTo;
 	}
 
+	public String logOut() {
+		user = new User();
+		FacesContext.getCurrentInstance().getExternalContext()
+				.invalidateSession();
+		return "./login?faces-redirect=true";
+	}
+
 	public User getUser() {
 		return user;
 	}
@@ -62,7 +70,5 @@ public class LoginBean {
 	public void setLoggedInAsCustomer(Boolean loggedInAsCustomer) {
 		this.loggedInAsCustomer = loggedInAsCustomer;
 	}
-
-	
 
 }

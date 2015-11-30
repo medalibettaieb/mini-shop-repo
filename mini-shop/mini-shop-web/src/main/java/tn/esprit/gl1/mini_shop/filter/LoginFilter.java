@@ -1,4 +1,4 @@
-package tn.esprit.gl1.mini_shop.mBeans.filter;
+package tn.esprit.gl1.mini_shop.filter;
 
 import java.io.IOException;
 
