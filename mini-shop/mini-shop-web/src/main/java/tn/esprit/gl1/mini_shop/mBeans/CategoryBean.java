@@ -41,6 +41,10 @@ public class CategoryBean {
 		return "";
 	}
 
+	public void doSomething() {
+		System.out.println(categoryChosen.getName());
+	}
+
 	public void doSelect() {
 		displyTable = true;
 	}
@@ -88,6 +92,10 @@ public class CategoryBean {
 
 	public void setDisplyTable(Boolean displyTable) {
 		this.displyTable = displyTable;
+	}
+
+	public Category doFindCategoryByNameBis(String string) {
+		return catalogServiceLocal.findCategoryByName(string);
 	}
 
 }
