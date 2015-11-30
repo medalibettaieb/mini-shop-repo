@@ -18,6 +18,13 @@
 			<h:panelGrid columns="2">
 				<h:outputText value="name" />
 				<h:inputText value="#{productBean.product.name}" />
+				<h:outputText value="category" />
+				<h:selectOneMenu value="#{categoryBean.categoryChosen}"
+					converter="cc">
+					<f:selectItem itemLabel="please select" />
+					<f:selectItems value="#{categoryBean.categories}" var="a"
+						itemLabel="#{a.name}" itemValue="#{a}"></f:selectItems>
+				</h:selectOneMenu>
 				<h:commandButton action="#{productBean.doCreateProduct()}"
 					value="create" />
 			</h:panelGrid>

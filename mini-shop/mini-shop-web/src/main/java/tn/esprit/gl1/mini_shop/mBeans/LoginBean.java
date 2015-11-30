@@ -44,7 +44,7 @@ public class LoginBean {
 		user = new User();
 		FacesContext.getCurrentInstance().getExternalContext()
 				.invalidateSession();
-		return "./login?faces-redirect=true";
+		return "/login?faces-redirect=true";
 	}
 
 	public User getUser() {
