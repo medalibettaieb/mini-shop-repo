@@ -14,6 +14,8 @@ import tn.esprit.gl1.mini_shop.services.UserServiceLocal;
 public class LoginBean {
 	// Model
 	private User user = new User();
+	private Boolean loggedInAsAdmin = false;
+	private Boolean loggedInAsCustomer = false;
 	// injection of the proxy
 	@EJB
 	private UserServiceLocal userServiceLocal;
@@ -22,11 +24,13 @@ public class LoginBean {
 	public String doLogin() {
 		User userLoggedIn = userServiceLocal.authenticate(user.getLogin(),
 				user.getPassword());
-		user=userLoggedIn;
+		user = userLoggedIn;
 		String navigateTo = null;
 		if (userLoggedIn instanceof Admin) {
+			loggedInAsAdmin = true;
 			navigateTo = "pages/adminHome/adminHome";
 		} else if (userLoggedIn instanceof Customer) {
+			loggedInAsCustomer = true;
 			navigateTo = "pages/customerHome/customerHome";
 		} else {
 			navigateTo = "error";
@@ -42,5 +46,23 @@ public class LoginBean {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+	public Boolean getLoggedInAsAdmin() {
+		return loggedInAsAdmin;
+	}
+
+	public void setLoggedInAsAdmin(Boolean loggedInAsAdmin) {
+		this.loggedInAsAdmin = loggedInAsAdmin;
+	}
+
+	public Boolean getLoggedInAsCustomer() {
+		return loggedInAsCustomer;
+	}
+
+	public void setLoggedInAsCustomer(Boolean loggedInAsCustomer) {
+		this.loggedInAsCustomer = loggedInAsCustomer;
+	}
+
+	
 
 }

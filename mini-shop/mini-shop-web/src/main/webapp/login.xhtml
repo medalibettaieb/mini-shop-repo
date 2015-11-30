@@ -8,7 +8,7 @@
 		<h:form>
 			<h:panelGrid columns="2">
 				<h:outputText value="login"></h:outputText>
-				<h:inputTextarea value="#{loginBean.user.login}" />
+				<h:inputText value="#{loginBean.user.login}" />
 				<h:outputText value="password"></h:outputText>
 				<h:inputSecret value="#{loginBean.user.password}" />
 				<h:commandButton action="#{loginBean.doLogin()}" value="login" />

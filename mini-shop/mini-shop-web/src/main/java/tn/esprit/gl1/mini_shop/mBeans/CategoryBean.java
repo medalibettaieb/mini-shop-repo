@@ -23,13 +23,15 @@ public class CategoryBean {
 	private CatalogServiceLocal catalogServiceLocal;
 
 	public String doCreateCategory() {
-		catalogServiceLocal.createCategory(category);
+		catalogServiceLocal.saveCategory(categoryChosen);
 		displyTable = false;
 		return "";
 	}
 
 	public String doDeleteCategory() {
 		catalogServiceLocal.removeCategory(categoryChosen);
+		categoryChosen = new Category();
+		displyTable = false;
 		return "";
 	}
 
@@ -37,6 +39,10 @@ public class CategoryBean {
 		System.out.println(catalogServiceLocal.findCategoryByName(findWord)
 				.getId());
 		return "";
+	}
+
+	public void doSelect() {
+		displyTable = true;
 	}
 
 	public void doDisplayTable() {

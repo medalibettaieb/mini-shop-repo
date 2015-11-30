@@ -8,9 +8,9 @@
 	<ui:define name="pageTop">welcome #{loginBean.user.login}</ui:define>
 	<ui:define name="pageSide">
 		<h:form>
-			<h:commandLink action="update" value="manage products" />
+			<h:commandLink action="manageProducts" value="manage products" />
 			<br />
-			<h:commandLink action="update" value="manage categories" />
+			<h:commandLink action="manageCategories" value="manage categories" />
 		</h:form>
 	</ui:define>
 	<ui:define name="pageContent">
@@ -29,20 +29,22 @@
 					<f:facet name="header">
 						<h:outputText value="#"></h:outputText>
 					</f:facet>
-					<h:commandButton action="#{categoryBean.doDeleteCategory()}"
-						value="delete">
+					<h:commandButton action="#{categoryBean.doSelect()}" value="select">
 						<f:setPropertyActionListener value="#{c}"
 							target="#{categoryBean.categoryChosen}"></f:setPropertyActionListener>
 					</h:commandButton>
 				</h:column>
 
 			</h:dataTable>
-<h:commandButton action="#{categoryBean.doDisplayTable}" value="create category" />
+			<h:commandButton action="#{categoryBean.doDisplayTable}"
+				value="create category" />
 			<h:panelGrid columns="2" rendered="#{categoryBean.displyTable}">
 				<h:outputText value="name" />
-				<h:inputText value="#{categoryBean.category.name}" />
+				<h:inputText value="#{categoryBean.categoryChosen.name}" />
 				<h:commandButton action="#{categoryBean.doCreateCategory()}"
-					value="create" />
+					value="save or update" />
+				<h:commandButton action="#{categoryBean.doDeleteCategory()}"
+					value="delete" />
 			</h:panelGrid>
 		</h:form>
 	</ui:define>
